@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title> Hello World List! :) </title>
+  </head>
+  <body>
+
+      <div style="width: 200px; border: 1px solid red;" id="main-table">
+
+      </div>
+
+      <div style="width: 200px; height: 40px;">
+       <button id="insert-button"> Nova Linha!</button>
+       <button id="remove-button"> Remove Pares!</button>
+      </div>
+
+      <script>
+
+        var elementId = 0;
+
+        $("#insert-button").click(function(){
+          var id = elementId + 1;
+          $("#main-table").append("<div id='"+id+"' style='width: 196px; height: 50px; border: 1px solid blue; margin: 0 auto;'> REGISTRO "+id+" </br> <button onclick='removeLinha("+id+")'>remove</button></div>");
+          elementId = id;
+        });
+
+
+      function removeLinha(linha){
+
+        var elem = document.getElementById(linha);
+        elem.remove();
+
+      }
+
+      $("#remove-button").click(function(){
+        // iterarar sobre todos os elementos da div pai
+        $("div").each(function(index, element){
+
+          var id = this.id;
+          var par = ((id%2) == 0);
+          
+          if (par && id != '') {
+            element.remove();
+          }
+        });
+
+      });
+
+      </script>
+
+  </body>
+</html>
